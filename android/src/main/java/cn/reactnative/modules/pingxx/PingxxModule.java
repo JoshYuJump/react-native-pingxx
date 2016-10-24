@@ -29,6 +29,10 @@ public class PingxxModule extends ReactContextBaseJavaModule implements Activity
         return "RCTPingxx";
     }
 
+    public void onNewIntent(Intent intent) {
+
+    }
+
     @Override
     public void initialize() {
         super.initialize();
@@ -55,6 +59,7 @@ public class PingxxModule extends ReactContextBaseJavaModule implements Activity
             WritableMap map = Arguments.createMap();
             map.putString("result", result);
             if (!result.equals("success")) {
+                map.putString("result", result);
                 map.putInt("errCode", data.getExtras().getInt("code"));
                 map.putString("errMsg", data.getExtras().getString("error_msg"));
                 map.putString("extraMsg", data.getExtras().getString("extra_msg"));
@@ -64,8 +69,8 @@ public class PingxxModule extends ReactContextBaseJavaModule implements Activity
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_PAYMENT && resultCode == Activity.RESULT_OK) {
+    public void onActivityResult(Activity act,  int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PAYMENT && resultCode == act.RESULT_OK) {
             this.handleResultData(data);
         }
     }
