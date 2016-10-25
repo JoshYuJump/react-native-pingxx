@@ -18,11 +18,16 @@ typedef NS_ENUM(NSUInteger, PingppErrorOption)
     PingppErrWxNotInstalled,
     PingppErrWxAppNotSupported,
     PingppErrCancelled,
+    PingppErrUnknownCancel,
     PingppErrViewControllerIsNil,
     PingppErrTestmodeNotifyFailed,
     PingppErrChannelReturnFail,
     PingppErrConnectionError,
-    PingppErrUnknownError
+    PingppErrUnknownError,
+    PingppErrActivation,
+    PingppErrRequestTimeOut,
+    PingppErrProcessing,
+    PingppErrQqNotInstalled,
 };
 
 typedef NS_ENUM(NSUInteger, PingppRequestContentTypeOption) {
@@ -99,6 +104,12 @@ typedef void (^PingppCompletion)(NSString *result, PingppError *error);
 + (void)setDebugMode:(BOOL)enabled;
 
 /**
+*  web渠道支付成功后点击 "返回商户" 直接关闭支付页面
+*  @enabled        是否启用
+*/
++ (void)ignoreResultUrl:(BOOL)enabled;
+
+/**
  *  设置 App ID
  *  @param  appId  Ping++ 的应用 ID，请登录 https://dashboard.pingxx.com 查看
  */
@@ -144,5 +155,9 @@ typedef void (^PingppCompletion)(NSString *result, PingppError *error);
  */
 + (void)setBdWalletNavTitleColor:(UIColor *)color;
 
+/**
+ * 设置webView navigationItem 颜色
+ */
++ (void)setWebViewItemColor:(UIColor *)itemColor buttonColor:(UIColor*)bntColor;
 @end
 #endif
