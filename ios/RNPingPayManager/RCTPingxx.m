@@ -11,7 +11,7 @@
 #import "Base/RCTEventDispatcher.h"
 #import "Base/RCTBridge.h"
 
-static NSString *gScheme = @"";
+static NSString *gScheme = @"UServiceApp";
 
 @interface RCTPingxx()
 
