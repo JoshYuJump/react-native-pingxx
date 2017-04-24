@@ -8,8 +8,18 @@
 
 #import "RCTPingxx.h"
 #import "Pingpp.h"
+
+#if __has_include(<React/RCTEventDispatcher.h>)
 #import <React/RCTEventDispatcher.h>
+#else
+#import "Base/RCTEventDispatcher.h"
+#endif
+
+#if __has_include(<React/RCTBridge.h>)
 #import <React/RCTBridge.h>
+#else
+#import "Base/RCTBridge.h"
+#endif
 
 static NSString *gScheme = @"UServiceApp";
 
